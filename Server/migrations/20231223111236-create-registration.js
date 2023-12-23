@@ -10,19 +10,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       reg_no: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false,
+        unique:true
       },
       date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull:false
       },
       stud_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       gender: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        
       },
       mobile: {
         type: Sequelize.STRING
