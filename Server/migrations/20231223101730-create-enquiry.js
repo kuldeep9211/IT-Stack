@@ -28,11 +28,11 @@ module.exports = {
       },
       qualification: {
         type: Sequelize.STRING,
-        allowNull:true
+        allowNull:false
       },
       clg_name: {
         type: Sequelize.STRING,
-        allowNull:true
+        allowNull:false
       },
       course:{
         type:Sequelize.INTEGER,
@@ -40,26 +40,27 @@ module.exports = {
       },
       counsellor:{
         type:Sequelize.INTEGER,
-        references : {model:"counsellors",key:"id"}
+        references : {model:"counsellors",key:"co_id"}
       },
       fees: {
         type: Sequelize.FLOAT,
-        allowNull:true
+        allowNull:false
       },
       placement: {
         type: Sequelize.BOOLEAN,
-        allowNull:true
+        allowNull:false
       },
       enq_type: {
         type: Sequelize.STRING,
-        allowNull:true
+        allowNull:false
       },
       feedback: {
         type: Sequelize.STRING,
         allowNull:true,
       },
       status: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull:false
       },
       createdAt: {
         allowNull: false,

@@ -4,48 +4,60 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Course extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+
     static associate(models) {
-      // define association here
+
     }
   }
   Course.init({
-    crs_name:  {
-      type:DataTypes.STRING,
-    allowNull:false,
-    validate:{
-      notNull:{msg:"Name Cannot be Null !"},
-      notEmpty:{msg:"Name Cannot be Empty !"}
-    }
-  },
-    crs_duration: {
-      type:DataTypes.STRING,
-    allowNull:true
+    crs_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Course Name Cannot be Null !" },
+        notEmpty: { msg: "Course Name Cannot be Empty !" }
+      }
     },
-    crs_fees:{
-      type:DataTypes.FLOAT,
-    allowNull:false
-  },
-    crs_image:{
-      type:DataTypes.STRING,
-    allowNull:true
-  },
+    crs_duration: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Course Duration Cannot be Null !" },
+        notEmpty: { msg: "Course Duration Cannot be Empty !" }
+      }
+    },
+    crs_fees: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Course Fees Cannot be Null !" },
+        notEmpty: { msg: "Course Fees Cannot be Empty !" }
+      }
+    },
+    crs_image: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     syllabus: {
-      type:DataTypes.STRING,
-    allowNull:true
-  },
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Course Syllabus Cannot be Null !" },
+        notEmpty: { msg: "Course Syllabus Cannot be Empty !" }
+      }
+    },
     status: {
-      type:DataTypes.BOOLEAN,
-    allowNull:true
-  }
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Status Cannot be Null !" },
+        notEmpty: { msg: "Status Cannot be Empty !" }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Course',
-    tableName:'courses'
+    tableName: 'courses'
   });
   return Course;
 };

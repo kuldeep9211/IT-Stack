@@ -4,20 +4,27 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class StudBatch extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+   
     static associate(models) {
-      // define association here
+      StudBatch.belongsTo(models.Registration,
+        {foreignKey:"student"})
+      StudBatch.belongsTo(models.Batch,
+        {foreignKey:"batch"})
     }
   }
   StudBatch.init({
-    Status: DataTypes.BOOLEAN
+    Status: {
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      validate:{
+        notNull:{msg:"Status can not be Null !"},
+        notEmpty:{msg:"Status can not be Empty !"}
+      }
+    }
   }, {
     sequelize,
     modelName: 'StudBatch',
+    tableName:"stud_batches"
   });
   return StudBatch;
 };

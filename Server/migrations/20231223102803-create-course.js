@@ -15,7 +15,7 @@ module.exports = {
       },
       crs_duration: {
         type: Sequelize.STRING,
-        allowNull: true
+        allowNull: false
       },
       crs_fees: {
         type: Sequelize.FLOAT,
@@ -27,11 +27,11 @@ module.exports = {
       },
       syllabus: {
         type: Sequelize.STRING,
-        allowNull: true
+        allowNull: false
       },
       status: {
         type: Sequelize.BOOLEAN,
-        allowNull: true
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

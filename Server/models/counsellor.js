@@ -4,53 +4,58 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Counsellor extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+
     static associate(models) {
-      // define association here
+
     }
   }
   Counsellor.init({
     co_name: {
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Counsellor Name Cannot be Null !" },
+        notEmpty: { msg: "Counsellor Name Cannot be Empty !" }
+      }
     },
-    email:{
-      type:DataTypes.STRING,
-    allowNull:false,
-    validate:{
-      notNull:{msg:"Email Cannot be Null !"},
-      isEmail:{msg:"Wrong Email Format !"},
-      notEmpty:{msg:"Email Cannot be Empty !"}
-    }
-  }, 
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Counsellor Email Cannot be Null !" },
+        isEmail: { msg: "Wrong Email Format !" },
+        notEmpty: { msg: "Counsellor Email Cannot be Empty !" }
+      }
+    },
     mobile: {
-      type:DataTypes.STRING,
-    allowNull:false,
-    validate:{
-      notNull:{msg:"Mobile Cannot be Null !"},
-      notEmpty:{msg:"Mobile Cannot be Empty !"},
-      len: {
-        args: [[10,10]],
-        msg: 'Phone Number can only be 10 digits'
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Counsellor Phone Number Cannot be Null !" },
+        notEmpty: { msg: "Counsellor Phone Number Cannot be Empty !" },
+        len: { args: [[10, 10]], msg: 'Phone Number can only be 10 digits' }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Password Cannot be Null !" },
+        notEmpty: { msg: "Password Cannot be Empty !" }
+      }
+    },
+    status: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "Status Cannot be Null !" },
+        notEmpty: { msg: "Status Cannot be Empty !" }
       }
     }
-  },
-    password:{
-      type:DataTypes.STRING,
-    allowNull:false,
-    validate:{
-      notNull:{msg:"Password Cannot be Null !"},
-      notEmpty:{msg:"Password Cannot be Empty !"}
-    }
-  } 
   }, {
     sequelize,
     modelName: 'Counsellor',
-    tableName:'counsellors'
+    tableName: 'counsellors'
   });
   return Counsellor;
 };

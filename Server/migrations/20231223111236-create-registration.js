@@ -14,6 +14,10 @@ module.exports = {
         allowNull:false,
         unique:true
       },
+      enq_no:{
+        type:Sequelize.INTEGER,
+        references : {model:"enquiries",key:"enq_no"}
+      },
       date: {
         type: Sequelize.DATE,
         allowNull:false
@@ -28,25 +32,35 @@ module.exports = {
       },
       gender: {
         type: Sequelize.STRING,
-        
+        allowNull:false
       },
       mobile: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       p_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       p_mobile: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       address: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
+      },
+      stud_course:{
+        type:Sequelize.INTEGER,
+        references : {model:"stud_courses",key:"stud_crs_id"}
       },
       qualification: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       status: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull:false
       },
       createdAt: {
         allowNull: false,

@@ -2,15 +2,24 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('StudBatches', {
+    await queryInterface.createTable('stud_batches', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      student:{
+        type: Sequelize.INTEGER,
+        references: { model: "registration", key: "id" }
+      },
+      batch:{
+        type: Sequelize.INTEGER,
+        references: { model: "batches", key: "b_id" }
+      },
       Status: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull:false
       },
       createdAt: {
         allowNull: false,
@@ -23,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('StudBatches');
+    await queryInterface.dropTable('stud_batches');
   }
 };

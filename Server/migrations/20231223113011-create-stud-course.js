@@ -2,21 +2,32 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('StudCourses', {
-      id: {
+    await queryInterface.createTable('stud_courses', {
+      stud_crs_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      student:{
+        type:Sequelize.INTEGER,
+        references : {model:"registration",key:"id"}
+      },
+      course:{
+        type:Sequelize.INTEGER,
+        references : {model:"courses",key:"crs_id"}
+      },
       total_fees: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        allowNull: false,
       },
       rem_fees: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        allowNull: false,
       },
       status: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -29,6 +40,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('StudCourses');
+    await queryInterface.dropTable('stud_courses');
   }
 };

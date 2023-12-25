@@ -4,22 +4,43 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Fees extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  
     static associate(models) {
-      // define association here
+      Fees.belongsTo(models.Registration,
+        {foreignKey:"student"})
+      Fees.belongsTo(models.StudCourse,
+        {foreignKey:"course"})
     }
   }
   Fees.init({
-    rec_no: DataTypes.STRING,
-    fees_amount: DataTypes.STRING,
-    Status: DataTypes.BOOLEAN
+    rec_no: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{msg:"Receipt Number can not be null!"},
+        notEmpty:{msg:"Receipt Number can not be Empty!"}
+      }
+    },
+    fees_amount: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{msg:"Fees Amount can not be null!"},
+        notEmpty:{msg:"Fees Amount can not be Empty!"}
+      }
+    },
+    Status: {
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      validate:{
+        notNull:{msg:"Status can not be null!"},
+        notEmpty:{msg:"Status can not be Empty!"}
+      }
+    }
   }, {
     sequelize,
     modelName: 'Fees',
+    tableName:'fees'
   });
   return Fees;
 };

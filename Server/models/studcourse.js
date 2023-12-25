@@ -4,22 +4,43 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class StudCourse extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  
     static associate(models) {
-      // define association here
+    StudCourse.belongsTo(models.Registration,
+      {foreignKey:student})
+    StudCourse.belongsTo(models.Course,
+      {foreignKey:course})
     }
   }
   StudCourse.init({
-    total_fees: DataTypes.FLOAT,
-    rem_fees: DataTypes.FLOAT,
-    status: DataTypes.BOOLEAN
+    total_fees: {
+      type:DataTypes.FLOAT,
+      allowNull:false,
+      validate:{
+        notNull:{msg:"Total Fees can not be null!"},
+        notEmpty:{msg:"Total Fees can not be empty!"}
+      }
+    },
+    rem_fees: {
+      type:DataTypes.FLOAT,
+      allowNull:false,
+      validate:{
+        notNull:{msg:"Remaining Fees can not be null!"},
+        notEmpty:{msg:"Remaining Fees can not be empty!"}
+      }
+    },
+    status: {
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      validate:{
+        notNull:{msg:"Status can not be null!"},
+        notEmpty:{msg:"Status can not be empty!"}
+      }
+    }
   }, {
     sequelize,
     modelName: 'StudCourse',
+    tableName:"stud_courses"
   });
   return StudCourse;
 };

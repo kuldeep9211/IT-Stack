@@ -4,22 +4,45 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Batch extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+
     static associate(models) {
-      // define association here
+      Batch.belongsTo(models.Course,
+        { foreignKey: "course" })
+      Batch.belongsTo(models.Faculty,
+        { foreignKey: "faculty" })
+      Batch.belongsTo(models.StudBatch,
+        { foreignKey: "student" })
     }
   }
   Batch.init({
-    start_date: DataTypes.STRING,
-    batch_timing: DataTypes.STRING,
-    Satus: DataTypes.BOOLEAN
+    start_date: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{msg:"Start Date can not be Null !"},
+        notEmpty:{msg:"Start Date can not be Empty !"}
+      }
+    },
+    batch_timing: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{msg:"Batch Timming can not be Null !"},
+        notEmpty:{msg:"Batch Timming can not be Empty !"}
+      }
+    },
+    Satus: {
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      validate:{
+        notNull:{msg:"Status can not be Null !"},
+        notEmpty:{msg:"Status can not be Empty !"}
+      }
+    }
   }, {
     sequelize,
     modelName: 'Batch',
+    tableName: "batches"
   });
   return Batch;
 };
