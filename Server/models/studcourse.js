@@ -7,9 +7,9 @@ module.exports = (sequelize, DataTypes) => {
   
     static associate(models) {
     StudCourse.belongsTo(models.Registration,
-      {foreignKey:student})
+      {foreignKey:'student'})
     StudCourse.belongsTo(models.Course,
-      {foreignKey:course})
+      {foreignKey:'course'})
     }
   }
   StudCourse.init({

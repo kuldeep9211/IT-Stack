@@ -15,14 +15,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Enquiry.init({
-    enq_no: {
+    reg_no: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notNull: { msg: "Enquiry Number Cannot be Null !" },
-        notEmpty: { msg: "Enquiry Number Cannot be Empty !" }
+        notNull: { msg: "Enq no. Cannot be Null !" },
+        notEmpty: { msg: "Enq no. Cannot be Empty !" }
       }
     },
+    
     enq_date: {
       type: DataTypes.DATE,
       allowNull: false,

@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   StudBatch.init({
-    Status: {
+    status: {
       type:DataTypes.BOOLEAN,
       allowNull:false,
       validate:{

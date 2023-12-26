@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty:{msg:"Fees Amount can not be Empty!"}
       }
     },
-    Status: {
+    status: {
       type:DataTypes.BOOLEAN,
       allowNull:false,
       validate:{

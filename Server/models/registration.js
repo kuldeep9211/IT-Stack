@@ -6,11 +6,13 @@ module.exports = (sequelize, DataTypes) => {
   class Registration extends Model {
 
     static associate(models) {
-      Registration.belongsTo(models.Enquiry,
-        { foreignKey: enq_no })
-      Registration.belongsTo(models.StudCourse,
-        { foreignKey: stud_course })
-    }
+        Registration.belongsTo(models.Enquiry,
+          { foreignKey: 'enq_no' })
+      Registration.belongsTo(models.Course,
+        { foreignKey: 'crs_id' })
+    Registration.belongsTo(models.Counsellor,
+      { foreignKey: 'co_id' })
+  }
   }
   Registration.init({
     reg_no: {
@@ -93,12 +95,14 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: { msg: "Qualification Cannot be Empty !" }
       }
     },
-    status: DataTypes.BOOLEAN,
+    status:{
+      type: DataTypes.BOOLEAN,
     allowNull:false,
     validate: {
       notNull: { msg: "Status Cannot be Null !" },
       notEmpty: { msg: "Status Cannot be Empty !" }
     }
+    },
 
   },
     {

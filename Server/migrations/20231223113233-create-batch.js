@@ -25,11 +25,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: "faculties", key: "f_id" }
       },
-      student: {
-        type: Sequelize.INTEGER,
-        references: { model: "stud_batches", key: "id" }
-      },
-      Satus: {
+      // student: {
+      //   type: Sequelize.INTEGER,
+      //   references: { model: "stud_batches", key: "id" }
+      // },
+      status: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },

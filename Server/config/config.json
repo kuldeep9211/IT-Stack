@@ -1,11 +1,12 @@
-{
-  "development": {
-    "username": "root",
-    "password": "indore@123",
-    "database": "IT_Stack_db",
-    "host": "localhost",
-    "dialect": "mysql"
-  },
+
+  {
+    "development": {
+      "username": "root",
+      "password": "root",
+      "database": "IT_Stack_db",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
   "test": {
     "username": "root",
     "password": null,

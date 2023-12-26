@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
         { foreignKey: "course" })
       Batch.belongsTo(models.Faculty,
         { foreignKey: "faculty" })
-      Batch.belongsTo(models.StudBatch,
-        { foreignKey: "student" })
+      // Batch.belongsTo(models.StudBatch,
+      //   { foreignKey: "student" })
     }
   }
   Batch.init({
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty:{msg:"Batch Timming can not be Empty !"}
       }
     },
-    Satus: {
+    status: {
       type:DataTypes.BOOLEAN,
       allowNull:false,
       validate:{

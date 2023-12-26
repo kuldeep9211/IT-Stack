@@ -3,17 +3,14 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('enquiries', {
-      id: {
+      enq_no: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        type: Sequelize.INTEGER
-      },
-      enq_no: {
         primaryKey: true,
-        type: Sequelize.STRING,
-        allowNull:false,
-        unique:true
+        unique: true,
       },
+      
       enq_date: {
         type: Sequelize.DATE,
         allowNull:false

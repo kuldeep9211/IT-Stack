@@ -1,7 +1,13 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
+// Add the following line at the beginning of your migration file to enable logging
+
+
 module.exports = {
+  
   async up(queryInterface, Sequelize) {
+
+queryInterface.sequelize.options.logging = true;
     await queryInterface.createTable('registration', {
       id: {
         allowNull: false,
@@ -52,11 +58,15 @@ module.exports = {
       },
       stud_course:{
         type:Sequelize.INTEGER,
-        references : {model:"stud_courses",key:"stud_crs_id"}
+        references : {model:"courses",key:"crs_id"}
       },
       qualification: {
         type: Sequelize.STRING,
         allowNull:false
+      },
+      counsellor:{
+        type:Sequelize.INTEGER,
+        references : {model:"counsellors",key:"co_id"}
       },
       status: {
         type: Sequelize.BOOLEAN,
